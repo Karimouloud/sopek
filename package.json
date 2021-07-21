@@ -1,0 +1,15 @@
+{
+  "name": "sopek",
+  "version": "1.0.0",
+  "description": "P6 backend-node-express-mongo openclassrooms",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Karimouloud/sopek.git"
+  },
+  "author": "Yekkeache Karim",
+  "license": "ISC"
+}
