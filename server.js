@@ -1,6 +1,10 @@
+// import package http 
 const http = require('http');
+
+// import express par app
 const app = require('./app');
 
+// renvoi d'un port valide 
 const normalizePort = val => {
   const port = parseInt(val, 10);
 
@@ -15,6 +19,7 @@ const normalizePort = val => {
 const port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
+// gestion des erreurs
 const errorHandler = error => {
   if (error.syscall !== 'listen') {
     throw error;

@@ -1,11 +1,22 @@
+// import express
 const express = require('express');
+
+// import moogose pour gerer mongoDB + facilement
 const mongoose = require('mongoose');
+
+// import du routeur user
 const saucesRoutes = require('./routes/sauce')
+
+// import routeur sauce
 const userRoutes = require('./routes/user');
+
+// import path pour utiliser le chemin vers le dossier images
 const path = require('path')
 
+// import dotenv pour utiliser variables d'environnement
 require('dotenv').config()
 
+// utilisation mangoose pour connecter l'appli avec mongoDB
 mongoose.connect(process.env.MONGODB,
     { useNewUrlParser: true,
       useUnifiedTopology: true,
@@ -14,6 +25,7 @@ mongoose.connect(process.env.MONGODB,
     .then(() => console.log('Connexion à MongoDB réussie !'))
     .catch(() => console.log('Connexion à MongoDB échouée !'));
 
+// const express
 const app = express();
 
 app.use(express.json())

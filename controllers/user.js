@@ -1,9 +1,15 @@
+// import bcrypt pour crypter le password
 const bcrypt = require('bcrypt');
+
+// import jsonwebtoken pour sécuriser l'échange de données avec jeton d'authentification
 const jwt = require('jsonwebtoken');
 const User = require('../models/User')
+
+// import maskdata pour masquer des données dans la bdd
 const Maskdata = require('maskdata')
 require('dotenv').config()
 
+// enregistrement nouvel user
 exports.signup = (req, res, next) => {
   bcrypt.hash(req.body.password, 10)
     .then(hash => {
@@ -18,12 +24,15 @@ exports.signup = (req, res, next) => {
     .catch(error => res.status(500).json({ error }));
 };
 
+// fonction log in
 exports.login = (req, res, next) => {
+  // comparaison email
   User.findOne({ email: Maskdata.maskEmail2(req.body.email) })
     .then(user => {
       if (!user) {
         return res.status(401).json({ error: 'Utilisateur non trouvé !' });
       }
+      // comparaison password
       bcrypt.compare(req.body.password, user.password)
         .then(valid => {
           if (!valid) {

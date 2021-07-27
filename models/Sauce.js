@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+// schema de donnée
 const sauceSchema = mongoose.Schema({
   name: { type: String, required: true },
   manufacturer: { type: String, required: true },
